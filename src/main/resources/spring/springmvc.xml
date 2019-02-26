@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:aop="http://www.springframework.org/schema/aop"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xmlns:mvc="http://www.springframework.org/schema/mvc"
+     xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd">
+<!-- 使用mvc:annotation-driven可以代替上面注解映射器和注解适配器
+此配置默认加载了很多参数绑定方法,如json转换解析器
+实际开发使用此方法配置-->
+<mvc:annotation-driven></mvc:annotation-driven>
+<!-- 对于使用注解的Handler可以使用单个配置,实际开发中建议使用组建扫描 -->
+<!-- 可以扫描controller,service,.... -->
+<context:component-scan base-package="com.ttf.ssm.index.controller,com.ttf.ssm.index.service" />
+<!-- 试图解析器  解析jsp,默认使用jstl标签,classpath下要有jstl的jar包 -->
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <!-- 配置jsp路径的前缀 -->
+    <property name="prefix" value="/WEB-INF/jsp/view/" />
+    <!-- 配置jsp路径的后缀 -->
+    <property name="suffix" value=".jsp" />
+</bean>
+</beans>
